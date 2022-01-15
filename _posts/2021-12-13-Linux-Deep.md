@@ -83,13 +83,12 @@ Linux 의 shell 에서 제공하는 `chmod` 명령어를 사용하여 파일의 
 ① Symbolic method
 
 `+` 와 `-` , `=` 을 이용한 방법이다.
-
-|  Access Class   | Operator            | Access Type |
+| Access Class | Operator | Access Type |
 | :-------------: | :------------------ | :---------- |
-|     u(user)     | +(add access)       | r(read)     |
-|    g(group)     | -(remove access)    | w(write)    |
-|    o(other)     | =(set exact access) | x(execute)  |
-| a(all: u, g, 0) |                     |
+| u(user) | +(add access) | r(read) |
+| g(group) | -(remove access) | w(write) |
+| o(other) | =(set exact access) | x(execute) |
+| a(all: u, g, 0) | |
 
 예시:
 
@@ -102,7 +101,6 @@ chmod o-w dirname // other 에게서 디렉터리 write 권한을 제거한다. 
 ```
 
 ② Absolute method
-
 `rwx` 를 이진수로 해석해 세자리 숫자로 표기하는 방법이다.
 |7 | 4(r) + 2(w) + 1(x)| rwx |read, write and execute|
 |:-:|:-----------------:|:---:|:---------------------:|
