@@ -5,9 +5,9 @@ categories: Linux
 tags: [Linux, CLI]
 ---
 
-## 1. 사용권한
+## 사용권한
 
-### 1.1 File Owner
+### File Owner
 
 리눅스에는 세 부류의 파일 소유자가 있다.
 
@@ -41,7 +41,7 @@ drwxr-xr-x   4 jin-yeonggim  staff  128 12 13 13:49
 # Permission       Owners      Group
 ```
 
-### 1.2 File Permission
+### File Permission
 
 ▸ 파일 권한을 나타내는 결과는 위와 같은 길이가 10인 문자열이다.
 
@@ -79,12 +79,12 @@ drwxr-xr-x
 
 `r`, `w`, `x`이면 해당 권한이 있음을 나타내고, `-` 이면 해당 권한이 없음을 나타낸다.
 
-### 1.3 권한 변경 (Change File Permission)
+### 권한 변경 (Change File Permission)
 
 Linux 의 shell 에서 제공하는 `chmod` 명령어를 사용하여 파일의 권한을 변경할 수 있다.
 두 가지 방식으로 변경할 수 있다.
 
-① Symbolic method
+#### Symbolic method
 
 `+` 와 `-` , `=` 을 이용한 방법이다.
 
@@ -105,7 +105,7 @@ chmod go=r filename # group 과 others 는 읽기 권한만 가진다.
 chmod o-w dirname # other 에게서 디렉터리 write 권한을 제거한다. rm 등을 사용할 수 없게 된다.
 ```
 
-② Absolute method
+#### Absolute method
 
 `rwx` 를 이진수로 해석해 세자리 숫자로 표기하는 방법이다.
 
@@ -128,7 +128,7 @@ chmod 744 myfile
 
 추가적인 내용은 [링크](https://kb.iu.edu/d/abdb)를 통해 확인할 수 있다.
 
-### 1.4 sudo 와 su
+### sudo 와 su
 
 `sudo` 명령어는 다른 `user` (기본적으로는 `superuser - root`) 보안 특권으로 프로그램을 실행할 수 있도록 한다. `sudo` 를 사용하면 `user` 나 `group` 이 `root password` 를 몰라도 몇몇(혹은 모든) 명령을 사용할 수 있게 된다.
 
@@ -195,9 +195,9 @@ linux를 잘 알면 좋은 점
 - 업무 자동화 유리
 - aws 사용할 때 유리
 
-## 2. 환경변수
+## 환경변수
 
-### 2.1 UNIX 환경변수
+### UNIX 환경변수
 
 rough하게 정의하면 운영체계가 굴러가는데 필요한 변수들의 모임이다.
 시스템에 정의된 환경변수를 확인하려면 터미널에 다음 명령어를 입력한다.
@@ -251,7 +251,7 @@ export NickName='DongDong'
 `bash` 쉘 변수를 특정 유저가 영구적으로 사용하도록 만들기 위해서는 `~/.bashrc` 파일에 설정해줘야 한다. (실제 터미널에서 실험해봤는데 새롭게 설정한 변수가 초기화된다. 이유 확인 필요)
 `bash` 쉘 변수를 모든 유저가 영구적으로 사용하도록 만들기 위해서는 `/etc/bash.bashrc` 파일에 해당 변수를 추가 해줘야 한다. (이 경우에도 변수가 자꾸 초기화된다. 이유가 뭘까?)
 
-### 2.2 Node.js에서 환경변수 설정하기
+### Node.js에서 환경변수 설정하기
 
 [npm의 doteenv 모듈](https://www.npmjs.com/package/dotenv#Config)을 사용해 자바 스크립트에서 환경변수를 사용할 수 있다.
 아래와 같이 간단하게 `node.js`를 이용해 환경변수를 확인해보자.
@@ -319,7 +319,7 @@ dongdong
 `.env` 파일은 `환경변수이름=값` 의 형태로 작성해야 한다.
 `'='` 기호 앞뒤에는 공백이 없으며, 텍스트를 감싸는 어떠한 괄호도 없다.
 
-### 2.3 주의할 점
+### 주의할 점
 
 `.env` 파일을 `git`에 올리면 안된다.
 제외 시키기 위해 `git.ignore`파일에 `.env`를 써줘야 한다.

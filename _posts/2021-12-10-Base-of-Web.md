@@ -15,9 +15,9 @@ Node.js를 이용하여 백엔드 서버를 구축한다.
 4.  Server-side 디버깅 방법을 알아본다.
 <hr>
 
-## 1. Node.js 기본
+## Node.js 기본
 
-### 1.1 Node.js란 무엇인가?
+### Node.js란 무엇인가?
 
 [공식문서](https://nodejs.org/en/about/)에 따르면 **Node.js는 비동기로 작동하는 Java Script Runtime**이다.
 스레드기반 네트워킹은 비효율적이고 다루기 어렵다.
@@ -31,7 +31,7 @@ Node.js는 [REPL](https://ko.wikipedia.org/wiki/REPL)환경의 스크립트를 �
 Event Loop은 timer, pending callbacks, idle prepare, poll, check, close callbacks 이렇게 6단계(phase)를 순회한다.
 각 단계는 FIFO로 작동하는 내부 큐를 가지고 있어서, Event Loop가 해당 phase에 들어오면 내부 큐에 있는 모든 callback함수를 실행한 후 다음 페이즈로 넘어간다. 자세한 내용은 생략.
 
-### 1.2 Node.js와 Web Browser
+### Node.js와 Web Browser
 
 Node.js 이전에는 JavaScript를 실행할 수 있는 환경(Runtime)으로 Web Browser가 유일했다.
 이것은 JavaScript가 웹 브라우저를 통한 실시간 피드백이 가능하기 때문에 웹 프로그래밍에 효율적이라는 장점으로 작용한 동시에 웹 브라우저에 지나치게 의존한다는 치명적인 약점으로 작용했다.
@@ -41,7 +41,7 @@ Node.js는 브라우저가 할 수 없는 몇 가지 작업도 가능하게 하�
 **Node.js로 개발을 한다는 것은 적절한 Node.js 내장 모듈을 어떻게 활용하는가의 문제이다.**
 예를 들어, DNS에 대한 지식을 알고 있다면, [DNS 모듈 사용법 문서](https://nodejs.org/dist/latest-v12.x/docs/api/dns.html)에서 관련 메소드를 사용할 수 있다.
 
-### 1.3 Node.js [fs모듈](https://nodejs.org/dist/latest-v12.x/docs/api/fs.html)
+### Node.js [fs모듈](https://nodejs.org/dist/latest-v12.x/docs/api/fs.html)
 
 파일의 [CRUD](https://ko.wikipedia.org/wiki/CRUD)를 구현할 수 있는 모듈이다.
 html파일에서 외부 스크립트 파일을 불러올 때 다음과 같이 작성했다.
@@ -345,7 +345,7 @@ module.exports = {
 };
 ```
 
-### 1.4 `Web API's fetch`
+### `Web API's fetch`
 
 `fetch`요청은 대표적인 비동기 요청인 네트워크 요청이다.
 **Node.js에서는 `fetch`모듈이 제공되지 않는다.**
@@ -484,11 +484,11 @@ if (typeof window === "undefined") {
 
 <hr>
 
-## 2. HTTP/네트워크 기초 및 응용
+## HTTP/네트워크 기초 및 응용
 
-### 2.1 HTTP/네트워크 기초
+### HTTP/네트워크 기초
 
-#### 1) 클라이언트 - 서버 아키텍처
+#### 클라이언트 - 서버 아키텍처
 
 모바일 쿠팡을 이용하여 쇼핑을 하는 경우를 생각해보자.
 검색어를 입력하여 검색하면 관련된 정보들이 잘 정리되어 보여진다.
@@ -513,7 +513,7 @@ if (typeof window === "undefined") {
 클라이언트에는 주로 웹사이트(웹앱), 스마트폰/태블릿 앱, 데스크탑 앱 등이 있다.
 서버에는 웹서버, 파일서버, 메일서버, DB서버 등이 있다.
 
-#### 2) 클라이언트 - 서버 통신
+#### 클라이언트 - 서버 통신
 
 클라이언트와 서버 간의 통신은 요청과 응답으로 이루어진다.
 요청이 있어야만 응답이 있다.
@@ -530,7 +530,7 @@ HTTP를 이용해 주고받는 메시지를 HTTP Message라고 한다.
 인터넷을 통해 서버에 데이터를 요구할 때에는 HTTP 프로토콜을 사용하며, URL이나 URI를 통해 접근할 수 있다.
 요청을 보낼 때 메소드를 특정해줘야 하는데 가장 많이 쓰는 메소드는 GET, POST, PUT, PATCH, DELETE가 있다. 자세한 내용은 [HTTP요청메서드(MDN문서)](https://developer.mozilla.org/ko/docs/Web/HTTP/Methods)를 참고.
 
-#### 3) URL과 URI
+#### URL과 URI
 
 [URL](https://ko.wikipedia.org/wiki/URL)은 Uniform Resource Locator의 약자로, 네트워크 상에서 웹 페이지, 이미지, 동영상 등의 파일이 위치한 정보를 나타낸다.
 [URI](https://developer.mozilla.org/ko/docs/Glossary/URI)는 Uniform Resource Identifier의 약자로, URL의 기본적인 요소인 `scheme`, `hosts`, `url-path`에 더해 `query`, `bookmaker`를 포함한다.
@@ -552,7 +552,7 @@ HTTP를 이용해 주고받는 메시지를 HTTP Message라고 한다.
 - `fragment`는 웹 페이지 상에 위치한 앵커 포인트를 나타낸다.
   프래그먼트를 잘 설명한 글이 있어 [여기](https://velog.io/@roro/URL-%ED%94%84%EB%9E%98%EA%B7%B8%EB%A8%BC%ED%8A%B8-HASH) 남겨둔다.
 
-#### 4) HTTP Message
+#### HTTP Message
 
 [MDN문서](https://developer.mozilla.org/ko/docs/Web/HTTP/Messages)에 아주 상세하게 나와 있다.
 간단하게 요약해보자
@@ -617,9 +617,9 @@ HTTP를 이용해 주고받는 메시지를 HTTP Message라고 한다.
 
 ---
 
-### 2.2 브라우저의 작동원리
+### 브라우저의 작동원리
 
-#### 1) AJAX
+#### AJAX
 
 AJAX는 Asynchronous JavaScript And XMLHttpRequest의 약자로, JavaScript, DOM, Fetch, XMLHttpReqest, HTML 등의 다양한 기술을 사용하는 웹 개발 기법이다.
 AJAX의 가장 큰 특징은 웹 페이지에 필요한 부분에 **필요한 데이터만 비동기적으로 받아와** 화면에 그려낼 수 있다는 것이다.
@@ -658,7 +658,7 @@ AJAX의 가장 큰 특징은 웹 페이지에 필요한 부분에 **필요한 �
     AJAX에서는 이전 상태를 기억하지 않는다.
     뒤로가기 기능을 구현하기 위해서는 별도의 History API를 사용해야 한다.
 
-#### 2.2 SSR과 CSR
+#### SSR과 CSR
 
 ![SSR](https://s3.ap-northeast-2.amazonaws.com/urclass-images/Dot3Zo7Dg-1619657779119.png)
 
