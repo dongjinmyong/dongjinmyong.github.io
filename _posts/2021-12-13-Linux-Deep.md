@@ -19,7 +19,7 @@ tags: [Linux, CLI]
 
 파일 소유자를 확인하는 방법:
 
-```
+```console
  DJM ☠️ ~/jinyoung/codestates/environment_variable$ ls -al
 total 32
 drwxr-xr-x   7 jin-yeonggim  staff  224 12 13 13:54 .
@@ -34,10 +34,11 @@ drwxr-xr-x   4 jin-yeonggim  staff  128 12 13 13:49 node_modules
 터미널에서 명령어 `ls` 뒤에 option으로 `-al`을 붙인다.
 출력된 결과를 해석하면 다음과 같다.
 
-```
-drwxr-xr-x   4 jin-yeonggim  staff  128 12 13 13:49 node_modules
-    ↓                ↓          ↓
- Permission       Owners      Group
+```console
+drwxr-xr-x   4 jin-yeonggim  staff  128 12 13 13:49
+# node_modules
+#    ↓                ↓          ↓
+# Permission       Owners      Group
 ```
 
 ### 1.2 File Permission
@@ -48,12 +49,12 @@ drwxr-xr-x   4 jin-yeonggim  staff  128 12 13 13:49 node_modules
 - 다음 9개의 문자는 세 개씩 끊어 읽어야 한다.
   각각 owner/user의 파일 권한, group의 파일 권한, others의 파일 권한을 나타낸다.
 
-```
+```console
 drwxr-xr-x
-d: 파일이냐 폴더냐 나타내는 자리
-rwx: owner/user의 파일 권한을 나타내는 자리
-r-x: group의 파일 권한을 나타내는 자리
-r-x:: others의 파일 권한을 나나태는 자리
+# d: 파일이냐 폴더냐 나타내는 자리
+# rwx: owner/user의 파일 권한을 나타내는 자리
+# r-x: group의 파일 권한을 나타내는 자리
+# r-x:: others의 파일 권한을 나나태는 자리
 ```
 
 ▸ File Type은 다음과 같다.
@@ -96,12 +97,12 @@ Linux 의 shell 에서 제공하는 `chmod` 명령어를 사용하여 파일의 
 
 예시:
 
-```
-chmod a+r filename // 모든 사용자에게 읽기 권한 부여
-chmod +r filename // access class를 생략하면 기본값 all 적용
-chmod go-rw filename // group 과 others 에게서 읽기, 쓰기 권한을 제거
-chmod go=r filename // group 과 others 는 읽기 권한만 가진다.
-chmod o-w dirname // other 에게서 디렉터리 write 권한을 제거한다. rm 등을 사용할 수 없게 된다.
+```console
+chmod a+r filename # 모든 사용자에게 읽기 권한 부여
+chmod +r filename # access class를 생략하면 기본값 all 적용
+chmod go-rw filename # group 과 others 에게서 읽기, 쓰기 권한을 제거
+chmod go=r filename # group 과 others 는 읽기 권한만 가진다.
+chmod o-w dirname # other 에게서 디렉터리 write 권한을 제거한다. rm 등을 사용할 수 없게 된다.
 ```
 
 ② Absolute method
@@ -120,9 +121,9 @@ chmod o-w dirname // other 에게서 디렉터리 write 권한을 제거한다. 
 
 위 표에 케이스를 조합해 세자리 숫자로 사용 권한을 설정할 수 있다.
 
-```
+```console
 chmod 744 myfile
-// 744 → rwxr--r--
+# 744 → rwxr--r--
 ```
 
 추가적인 내용은 [링크](https://kb.iu.edu/d/abdb)를 통해 확인할 수 있다.
@@ -131,7 +132,7 @@ chmod 744 myfile
 
 `sudo` 명령어는 다른 `user` (기본적으로는 `superuser - root`) 보안 특권으로 프로그램을 실행할 수 있도록 한다. `sudo` 를 사용하면 `user` 나 `group` 이 `root password` 를 몰라도 몇몇(혹은 모든) 명령을 사용할 수 있게 된다.
 
-```
+```console
 sudo command
 ```
 
@@ -139,7 +140,7 @@ sudo command
 
 `su` 는 `switch user` 의 줄임말이다.
 
-```
+```console
 su user
 ```
 
@@ -152,20 +153,20 @@ su user
 <summary>`root` 에 비밀번호를 설정하는 방법</summary>
 <div markdown="1">
 
-```
+```console
 sudo -s
 ```
 
 를 입력하고 `password` 입력하라고 뜨면 현재 로그인 되어 있는 사용자 계정 비밀번호(맥북 부팅할 때 입력하는 비밀번호)를 입력한다.
 
-```
+```console
 whoami
 root
 ```
 
 `whoami` 를 통해 현재 계정이 `root` 임을 확인할 수 있다.
 
-```
+```console
 passwd root
 ```
 
@@ -201,47 +202,47 @@ linux를 잘 알면 좋은 점
 rough하게 정의하면 운영체계가 굴러가는데 필요한 변수들의 모임이다.
 시스템에 정의된 환경변수를 확인하려면 터미널에 다음 명령어를 입력한다.
 
-```
+```console
 export
-// printenv로도 조회가능하다
-// env로도 조회가능하다
+# printenv로도 조회가능하다
+# env로도 조회가능하다
 ```
 
 아무런 인자 없이 위와 같이 입력하면 OS 에 설정된 모든 환경변수들의 목록을 볼 수 있다.
 특정 환경변수의 값만 확인하고 싶을 때에는 `echo` 명령어를 사용한다.
 
-```
+```console
 echo $환경변수
-// printenv나 env로는 특정 환경변수를 조회할 수 없다.
-// 환경변수 이름에 공백이 있는 경우 따옴표로 감싸준다.
+# printenv나 env로는 특정 환경변수를 조회할 수 없다.
+# 환경변수 이름에 공백이 있는 경우 따옴표로 감싸준다.
 ```
 
 `$`를 환경변수명 앞에 붙여야 한다.
 예를 들어
 
-```
+```console
 echo $LANG
-// echo 명령어로 현재 쉘의 환경변수 뿐 아니라 시스템 전역변수도 읽을 수 있다.
-// 시스템 전역변수를 읽는 방법으로 printenv name 도 있다.
-// printenv 사용할 때에는 변수명 앞에 $를 쓰지 않아도 된다.
+# echo 명령어로 현재 쉘의 환경변수 뿐 아니라 시스템 전역변수도 읽을 수 있다.
+# 시스템 전역변수를 읽는 방법으로 printenv name 도 있다.
+# printenv 사용할 때에는 변수명 앞에 $를 쓰지 않아도 된다.
 ```
 
 을 입력하면
 
-```
+```console
 ko_KR.UTF-8
 ```
 
 와 같은 결과를 얻게 된다.
 `export`를 사용해 <u>현재 터미널에서만 사용가능한</u> 환경변수를 설정할 수도 있다.
 
-```
+```console
 export name=value
 ```
 
 예를 들어
 
-```
+```console
 export NickName='DongDong'
 ```
 
@@ -255,7 +256,7 @@ export NickName='DongDong'
 [npm의 doteenv 모듈](https://www.npmjs.com/package/dotenv#Config)을 사용해 자바 스크립트에서 환경변수를 사용할 수 있다.
 아래와 같이 간단하게 `node.js`를 이용해 환경변수를 확인해보자.
 
-```cli
+```console
 # terminal
 ~$mkdir environment-test
 ~$cd environment-test
@@ -286,14 +287,14 @@ console.log(process.env.LANG); // ko_KR.UTF-8
 
 `node.js` 환경에서 시스템 환경변수를 새롭게 설정하기 위햇서는 [dotenv 모듈](https://www.npmjs.com/package/dotenv)을 사용해야 한다.
 
-```cli
+```console
 npm i dotenv // 설치
 ```
 
 `dotenv 모듈`은 사용자가 작성한 `.env 파일`을 `process.env` 객체에 적용할 수 있도록 해준다.
 `.env` 파일을 만들어 거기에 필요한 환경변수를 작성하고 나서 `dotenv.config();` 를 생행하면 `.env` 파일에 정의된 환경변수가 `process.env` 객체에 추가된다.
 
-```cli
+```console
 ~/environment-test$nano .env
 # 환경변수 작성
 ...
