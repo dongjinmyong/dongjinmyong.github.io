@@ -57,22 +57,22 @@ r-x:: others의 파일 권한을 나나태는 자리
 ```
 
 ▸ File Type은 다음과 같다.
-| value | File Type|
+| value | File Type |
 |:-----:|:--------:|
-|- |일반파일|
-|d |디렉토리 파일|
-|b |블록 디바이스 파일|
-|c |문자 디바이스 파일|
-|l |심볼릭 링크 파일|
+| - | 일반파일 |
+| d | 디렉토리 파일 |
+| b | 블록 디바이스 파일 |
+| c | 문자 디바이스 파일 |
+| l | 심볼릭 링크 파일 |
 
 이 중에서 주로 `-` 와 `d` 를 사용한다.
 
 ▸ 권한을 나타내는 세 개의 상태는 다음과 같다.
 | 문자 | 의미 |
 |:---:|:---------------:|
-|r |read - 읽기 권한 |
-|w |write - 쓰기 권한 |
-|x |execute - 실행 권한|
+| r |read - 읽기 권한 |
+| w |write - 쓰기 권한 |
+| x |execute - 실행 권한 |
 
 `r`, `w`, `x`이면 해당 권한이 있음을 나타내고, `-` 이면 해당 권한이 없음을 나타낸다.
 
@@ -102,15 +102,15 @@ chmod o-w dirname // other 에게서 디렉터리 write 권한을 제거한다. 
 
 ② Absolute method
 `rwx` 를 이진수로 해석해 세자리 숫자로 표기하는 방법이다.
-|7 | 4(r) + 2(w) + 1(x)| rwx |read, write and execute|
+| 7 | 4(r) + 2(w) + 1(x) | rwx | read, write and execute |
 |:-:|:-----------------:|:---:|:---------------------:|
-|6 | 4(r) + 2(w) + 0(-)| rw- |read and write |
-|5 | 4(r) + 0(-) + 1(x)| r-x |read and execute |
-|4 | 4(r) + 0(-) + 0(-)| r-- |read only |
-|3 | 0(-) + 2(w) + 1(x)| -wx |write and execute |
-|2 | 0(-) + 2(w) + 0(-)| -w- |write only |
-|1 | 0(-) + 0(-) + 1(x)| --x |execute only |
-|0 | 0(-) + 0(-) + 0(-)| --- |none |
+| 6 | 4(r) + 2(w) + 0(-) | rw- | read and write |
+| 5 | 4(r) + 0(-) + 1(x) | r-x | read and execute |
+| 4 | 4(r) + 0(-) + 0(-) | r-- | read only |
+| 3 | 0(-) + 2(w) + 1(x) | -wx | write and execute |
+| 2 | 0(-) + 2(w) + 0(-) | -w- | write only |
+| 1 | 0(-) + 0(-) + 1(x) | --x | execute only |
+| 0 | 0(-) + 0(-) + 0(-) | --- | none |
 
 위 표에 케이스를 조합해 세자리 숫자로 사용 권한을 설정할 수 있다.
 
