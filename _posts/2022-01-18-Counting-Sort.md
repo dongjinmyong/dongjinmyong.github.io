@@ -16,7 +16,7 @@ Counting Sort(계수 정렬)을 이용해 오름차순 정렬한다.
 출력: [0, 1, 3, 3, 4, 8, 9]
 ```
 
-기본 로직은 다음과 같다.
+## 기본로직
 
 - 수의 범위 `[max, min]`을 계산하고, 그만한 길이를 가지는 빈 배열을 만든다. 여기에 각 수들이 나타나는 횟수를 기록할 것이기 때문에 `count`라는 이름으로 배열을 만든다. 모든 값을 0으로 초기화한다.
   ```
@@ -62,7 +62,7 @@ function countSort(arr) {
     count[arr[i] - min]++;
   }
 
-  for (let i = 1; i < count.length; i++) {
+  for (let i = 1; i < range; i++) {
     count[i] += count[i - 1];
   }
 
